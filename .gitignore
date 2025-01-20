@@ -1,0 +1,13 @@
+# Ignore the node_modules folder in the backend
+client/node_modules/
+
+# Ignore the node_modules folder in the frontend
+server/node_modules/
+
+# Ignore the main node_modules folder (if exists at root)
+node_modules/
+
+# Ignore other typical folders/files
+dist/
+build/
+.env
