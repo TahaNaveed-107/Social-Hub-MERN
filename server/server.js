@@ -1,25 +1,24 @@
 import express from 'express';
-import dotenv from 'dotenv';
-import connectDB from './config/db.js';
-import userRoutes from './routes/userRoutes.js';
-import postRoutes from './routes/postRoutes.js';
-import commentRoutes from './routes/commentRoutes.js';
-import authRoutes from './routes/authRoutes.js';
-import errorHandler from './middleware/errorHandler.js';
+import connectDB from './config/connection.js';
+import userRoutes from "./routes/userRoutes.js"
+import dotenv from "dotenv"
+
+dotenv.config();
 
 const app = express();
 app.use(express.json());
-
 
 app.get('/', (req,res)=>{
     res.send("Hello World from Express JS");
 })
 
+app.use("/users", userRoutes);
+
 
 
 
 connectDB();
-const port = 3005;
-app.listen(port, ()=>{
-    console.log(`Server running at port ${port}`);
+app.listen(process.env.PORT, ()=>{
+    console.log(`Server running at port ${process.env.PORT}`);
+    // console.log(`${process.env.MONGODB_URI}`);
 })

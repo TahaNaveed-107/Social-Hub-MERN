@@ -30,13 +30,13 @@ const userSchema =  new Schema({
     followers:[
         {
             type:mongoose.Schema.Types.ObjectId,
-            ref: "Users",
+            ref: "User",
         }
     ],
     follwing:[
         {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Users"
+            ref: "User"
         }
     ]
 
