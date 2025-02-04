@@ -83,8 +83,8 @@ export const loginUser = async (req, res) => {
       id: existingUser._id,
       email: existingUser.email,
     },
-    "process.env.SECRET_KEY",
-    { expiresIn: "1h" }
+    process.env.JWT_SECRET_KEY,
+    { expiresIn: "1d" }
   );
 
   return res.status(200).json({
@@ -97,9 +97,45 @@ export const loginUser = async (req, res) => {
     token: token,
   });
 };
-export const updateUser = async (req, res) => {
-  const userId = req.user.id;
-  const { name, bio, password } = req.body;
 
-  const user = await User.findById(userId);
+// Update user
+export const updateUser = async (req, res) => {
+  try {
+    const userID = req.user.id;
+
+    const { name, bio, password, age } = req.body;
+
+    const user = await User.findById(userID);
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+      });
+    }
+
+    if (name) user.name = name;
+    if (bio) user.bio = bio;
+    if (age) user.age = age;
+    if (password) {
+      user.password = bcrypt.hashSync(password, 10);
+    }
+
+    await user.save();
+
+    return res.status(200).json({
+      message: "user updated successfully",
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+        bio: user.bio,
+      },
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "something went wrong",
+      errorMsg: error.message,
+      error: error,
+    });
+  }
 };
