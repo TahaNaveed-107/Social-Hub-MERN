@@ -12,6 +12,6 @@ const router = express.Router();
 router.get("/", getUsers); // Route to get All Users
 router.post("/register", registerUser); // Route to Register User
 router.post("/login", loginUser); // Route to Login User
-router.post("/update", updateUser);
+router.post("/update", authenticateToken, updateUser);
 
 export default router;
