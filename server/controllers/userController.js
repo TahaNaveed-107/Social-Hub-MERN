@@ -1,6 +1,8 @@
 import User from "../models/user.model.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import Post from "../models/post.model.js";
+import Comment from "../models/comment.model.js";
 
 // Get Users
 export const getUsers = async (req, res) => {
@@ -137,5 +139,27 @@ export const updateUser = async (req, res) => {
       errorMsg: error.message,
       error: error,
     });
+  }
+};
+
+export const deleteUser = async (req, res) => {
+  try {
+    const userID = req.user.id;
+
+    const user = await User.findById(userID);
+
+    if (!user) {
+      return res.status(404).json({
+        message: "User not found",
+      });
+    }
+    await Post.deleteMany({ user: userID });
+    await Comment.deleteMany({ user: userID });
+
+    await User.findByIdAndDelete(userID);
+
+    res.status(200).json({ message: "User deleted successfully" });
+  } catch (error) {
+    res.status(500).json({ message: "Server error", error: error.message });
   }
 };
