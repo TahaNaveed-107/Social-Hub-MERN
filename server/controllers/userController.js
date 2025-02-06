@@ -12,7 +12,6 @@ export const getUsers = async (req, res) => {
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
-  console.log("GET METHOD OF GET USERS");
 };
 
 // Newer Model for registering new user
