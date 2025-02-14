@@ -10,7 +10,7 @@ const postSchema = new Schema(
     },
     url: {
       type: String,
-      reuqired: true,
+      required: true,
     },
     caption: {
       type: String,
