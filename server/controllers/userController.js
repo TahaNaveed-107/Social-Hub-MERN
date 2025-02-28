@@ -14,7 +14,7 @@ export const getUsers = async (req, res) => {
   }
 };
 
-// Newer Model for registering new user
+// Register a new user
 export const registerUser = async (req, res) => {
   const { name, email, password, age } = req.body;
 
