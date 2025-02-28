@@ -154,7 +154,6 @@ export const deleteUser = async (req, res) => {
     }
     await Post.deleteMany({ user: userID });
     await Comment.deleteMany({ user: userID });
-
     await User.findByIdAndDelete(userID);
 
     res.status(200).json({ message: "User deleted successfully" });
