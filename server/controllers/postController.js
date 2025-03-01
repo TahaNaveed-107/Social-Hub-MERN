@@ -93,6 +93,11 @@ export const createPost = async (req, res) => {
 export const editPost = async (req, res) => {
   try {
     const userID = req.user.id;
+    const postID = req.params.postID;
+    const { caption } = req.body;
+
+    console.log("Here is the user id ", userID);
+    console.log("Here is the post id ", postID);
 
     if (!userID) {
       return res.status(404).json({
@@ -100,7 +105,6 @@ export const editPost = async (req, res) => {
       });
     }
 
-    const { caption } = req.body;
     const user = await User.findById(userID);
 
     if (!user) {
@@ -108,6 +112,24 @@ export const editPost = async (req, res) => {
         message: `No user found of id ${user}`,
       });
     }
+
+    const post = await Post.findById(postID);
+    if (!post) {
+      return res.status(404).json({
+        message: " No Post Found ",
+      });
+    }
+
+    if (caption) post.caption = caption;
+
+    await post.save();
+
+    return res.status(200).json({
+      message: "User Updated Successfully",
+      post: {
+        caption,
+      },
+    });
   } catch (error) {
     return res.status(500).json({
       message: " Server Error ",

@@ -10,6 +10,6 @@ const router = express.Router();
 
 router.get("/", authenticateToken, getPosts);
 router.post("/create", authenticateToken, createPost);
-router.patch("/edit", authenticateToken, editPost);
+router.patch("/:postID/edit", authenticateToken, editPost);
 
 export default router;
