@@ -1,0 +1,13 @@
+.eclipse {
+  background-color: antiquewhite;
+  height: 4rem;
+  min-width: 100%;
+  justify-content: center;
+}
+.text {
+  font-weight: 600;
+  position: fixed;
+  background-color: azure;
+  /* margin: auto; */
+  transform: translate(100, -50%);
+}
