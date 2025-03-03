@@ -1,5 +1,5 @@
 # Ignore the node_modules folder in the backend
-client/node_modules/
+flow/node_modules/
 
 # Ignore the node_modules folder in the frontend
 server/node_modules/
