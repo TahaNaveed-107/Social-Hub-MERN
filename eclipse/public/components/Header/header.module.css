@@ -2,12 +2,11 @@
   background-color: antiquewhite;
   height: 4rem;
   min-width: 100%;
-  justify-content: center;
 }
 .text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 4rem;
   font-weight: 600;
-  position: fixed;
-  background-color: azure;
-  /* margin: auto; */
-  transform: translate(100, -50%);
 }
