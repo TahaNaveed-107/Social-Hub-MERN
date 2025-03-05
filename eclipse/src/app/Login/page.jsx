@@ -1,10 +1,13 @@
 "use client";
 import { useState } from "react";
+import { setToken } from "@/redux/slices/authSlice";
+import { useDispatch } from "react-redux";
 
 export default function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [token, setToken] = useState("");
+
+  const dispatch = useDispatch();
 
   const userLogin = async (email, password) => {
     try {
@@ -17,8 +20,11 @@ export default function Login() {
       });
       const data = await response.json();
       console.log("Login Response: ", data);
-      setToken(data.token);
-      console.log("Token : ", token);
+
+      if (data.token) {
+        dispatch(setToken(data.token));
+        console.log("Token stored in redux", data.token);
+      }
     } catch (error) {
       console.error("Login Error: ", error);
     }
@@ -41,6 +47,7 @@ export default function Login() {
               type="email"
               name="userEmail"
               id="email"
+              value={email}
               onChange={(e) => {
                 setEmail(e.target.value);
               }}
@@ -52,6 +59,7 @@ export default function Login() {
               type="password"
               name="userPassword"
               id="password"
+              value={password}
               onChange={(e) => {
                 setPassword(e.target.value);
               }}
