@@ -44,7 +44,7 @@ export default function Login() {
 
         localStorage.setItem("name", data.user.name);
 
-        router.push("/Dashboard");
+        router.push("/Eclipse");
       }
     } catch (error) {
       console.error("Login Error: ", error);
