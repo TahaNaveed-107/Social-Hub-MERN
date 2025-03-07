@@ -1,4 +1,5 @@
 "use client";
+import Menu from "../../../public/components/Menu/[userID]/page";
 import { useState, useEffect } from "react";
 import Authenticate from "../../../public/components/Authentication/page";
 export default function Eclipse() {
@@ -28,6 +29,7 @@ export default function Eclipse() {
           Clear Credentials
         </button>
       </div>
+      <Menu />
     </Authenticate>
   );
 }
