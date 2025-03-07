@@ -1,7 +1,7 @@
 "use client";
-import Menu from "../../../public/components/Menu/[userID]/page";
+import Menu from "../../../../public/components/Menu/page";
 import { useState, useEffect } from "react";
-import Authenticate from "../../../public/components/Authentication/page";
+import Authenticate from "../../../../public/components/Authentication/page";
 export default function Eclipse() {
   const [name, setName] = useState("");
   const [token, setToken] = useState("");
@@ -15,6 +15,8 @@ export default function Eclipse() {
 
   const clearCredentials = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("name");
+    localStorage.removeItem("userID");
   };
 
   useEffect(() => {}, [token]);

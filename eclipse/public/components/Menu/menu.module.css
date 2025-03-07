@@ -1,0 +1,29 @@
+.tabsList {
+  display: flex;
+  flex-direction: row;
+  bottom: 20;
+  left: 50%;
+  background-color: darkgray;
+  width: 40%;
+  max-width: 40%;
+  justify-content: center;
+  position: fixed;
+  padding: 1rem;
+  transform: translate(-50%);
+  border-radius: 15px;
+  justify-content: space-around;
+}
+
+.buttons {
+  border: none;
+  background-color: rgb(228, 228, 228);
+  border-radius: 10px;
+  height: 2rem;
+  width: 5rem;
+  transition: 0.5s;
+}
+
+.buttons:hover {
+  background-color: white;
+  transition: 0.5s;
+}

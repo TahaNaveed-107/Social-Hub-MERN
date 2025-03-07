@@ -7,6 +7,7 @@ export default function Authenticate({ children }) {
 
   useEffect(() => {
     const storedToken = localStorage.getItem("token");
+    const userID = localStorage.getItem("userID");
     if (!storedToken) {
       console.log("Authentication Failed, Redirecting to Login Page");
       //   alert("Login Again?");
@@ -14,7 +15,7 @@ export default function Authenticate({ children }) {
     }
     if (storedToken) {
       setToken(storedToken);
-      router.push("/Eclipse");
+      router.push(`/Eclipse/${userID}`);
     }
   }, [token]);
 

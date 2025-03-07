@@ -41,10 +41,13 @@ export default function Login() {
         // setting up name in redux state
         dispatch(setName(data.user.name));
         console.log("Name set for the user as : ", data.user.name);
-
         localStorage.setItem("name", data.user.name);
 
-        router.push("/Eclipse");
+        // setting up user ID in local storage
+        const userID = data.user.id;
+        localStorage.setItem("userID", userID);
+
+        router.push(`/Eclipse/${userID}`);
       }
     } catch (error) {
       console.error("Login Error: ", error);
