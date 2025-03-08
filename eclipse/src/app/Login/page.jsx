@@ -11,9 +11,9 @@ export default function Login() {
 
   const dispatch = useDispatch();
 
-  const userLogin = async () => {
+  const userLogin = async (req, res) => {
     try {
-      const response = await fetch("http://localhost:4004/user/login", {
+      const response = await fetch("http://192.168.10.31:4004/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -29,27 +29,25 @@ export default function Login() {
       const data = await response.json();
       console.log("Login Response: ", data);
 
-      if (data.token) {
-        // setting up token in redux state
-        dispatch(setToken(data.token));
-        localStorage.setItem("token", data.token);
-        console.log("Token set for the user as : ", data.token);
+      // setting up token in redux state
+      // dispatch(setToken(data.token));
+      // localStorage.setItem("token", data.token);
+      // console.log("Token set for the user as : ", data.token);
 
-        // setting up email in redux state
-        dispatch(setEmail(data.user.email));
-        console.log("Email set for the user as : ", data.user.email);
+      // // setting up email in redux state
+      // dispatch(setEmail(data.user.email));
+      // console.log("Email set for the user as : ", data.user.email);
 
-        // setting up name in redux state
-        dispatch(setName(data.user.name));
-        console.log("Name set for the user as : ", data.user.name);
-        localStorage.setItem("name", data.user.name);
+      // setting up name in redux state
+      dispatch(setName(data.user.name));
+      console.log("Name set for the user as : ", data.user.name);
+      localStorage.setItem("name", data.user.name);
 
-        // setting up user ID in local storage
-        const userID = data.user.id;
-        localStorage.setItem("userID", userID);
+      // setting up user ID in local storage
+      const userID = data.user.id;
+      localStorage.setItem("userID", userID);
 
-        router.push(`/Eclipse/${userID}`);
-      }
+      router.push(`/Eclipse/${userID}`);
     } catch (error) {
       console.error("Login Error: ", error);
     }
