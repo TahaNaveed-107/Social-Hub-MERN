@@ -3,6 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import Post from "../models/post.model.js";
 import Comment from "../models/comment.model.js";
+import { generateToken } from "../utils/generateToken.js";
 
 // Get Users
 export const getUsers = async (req, res) => {
@@ -79,14 +80,7 @@ export const loginUser = async (req, res) => {
       .json({ message: "Invalid credentials. Please try again." });
   }
 
-  const token = jwt.sign(
-    {
-      id: existingUser._id,
-      email: existingUser.email,
-    },
-    process.env.JWT_SECRET_KEY,
-    { expiresIn: "1d" }
-  );
+  const token = generateToken(existingUser._id, existingUser.email);
 
   return res.status(200).json({
     message: "Login Successful",
