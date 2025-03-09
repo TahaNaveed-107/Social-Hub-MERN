@@ -13,7 +13,7 @@ export default function Login() {
 
   const userLogin = async (req, res) => {
     try {
-      const response = await fetch("http://192.168.10.31:4004/user/login", {
+      const response = await fetch("http://localhost:4004/user/login", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

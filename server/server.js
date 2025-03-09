@@ -5,13 +5,14 @@ import dotenv from "dotenv";
 import postRoutes from "./routes/postRoutes.js";
 import cors from "cors";
 import cookieParser from "cookie-parser";
+import authRoutes from "./routes/authRoutes.js";
 
 dotenv.config();
 const app = express();
 
 app.use(
   cors({
-    origin: "http://192.168.10.31:3000",
+    origin: "http://localhost:3000",
     credentials: true,
   })
 );
@@ -24,6 +25,7 @@ app.get("/", (req, res) => {
 
 app.use("/user", userRoutes);
 app.use("/post", postRoutes);
+app.use("/user", authRoutes);
 
 const PORT = process.env.PORT;
 connectDB();

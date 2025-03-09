@@ -86,7 +86,7 @@ export const loginUser = async (req, res) => {
     httpOnly: true, // Prevents XSS attacks
     secure: process.env.NODE_ENV === "production", // Enables secure cookies in production
     sameSite: "Strict", // CSRF protection
-    maxAge: 3 * 60 * 60 * 1000, // 3 hours expiration
+    maxAge: 3 * 60, // 3 minutes expiration
   });
 
   return res.status(200).json({
@@ -96,6 +96,7 @@ export const loginUser = async (req, res) => {
       name: existingUser.name,
       email: existingUser.email,
     },
+    token: token,
   });
 };
 
