@@ -4,7 +4,6 @@ import { useState, useEffect } from "react";
 import Authenticate from "../../../../public/components/Authentication/page";
 export default function Eclipse() {
   const [name, setName] = useState("");
-  // const [token, setToken] = useState("");
 
   useEffect(() => {
     const storedName = localStorage.getItem("name");
@@ -13,23 +12,12 @@ export default function Eclipse() {
     }
   }, []);
 
-  // const clearCredentials = () => {
-  //   localStorage.removeItem("token");
-  //   localStorage.removeItem("name");
-  //   localStorage.removeItem("userID");
-  // };
-
-  // useEffect(() => {}, [token]);
 
   return (
     <Authenticate>
       <div>
         <h2>Welcome {name ? name : "User"}</h2>
         <p>Welcome to Eclipse page</p>
-
-        {/* <button type="button" onClick={clearCredentials}>
-          Clear Credentials
-        </button> */}
       </div>
       <Menu />
     </Authenticate>

@@ -29,16 +29,6 @@ export default function Login() {
       const data = await response.json();
       console.log("Login Response: ", data);
 
-      // setting up token in redux state
-      // dispatch(setToken(data.token));
-      // localStorage.setItem("token", data.token);
-      // console.log("Token set for the user as : ", data.token);
-
-      // // setting up email in redux state
-      // dispatch(setEmail(data.user.email));
-      // console.log("Email set for the user as : ", data.user.email);
-
-      // setting up name in redux state
       dispatch(setName(data.user.name));
       console.log("Name set for the user as : ", data.user.name);
       localStorage.setItem("name", data.user.name);
