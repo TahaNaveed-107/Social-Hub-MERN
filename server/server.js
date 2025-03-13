@@ -9,7 +9,7 @@ import authRoutes from "./routes/authRoutes.js";
 
 dotenv.config();
 const app = express();
-
+ 
 app.use(
   cors({
     origin: "http://localhost:3000",
@@ -23,9 +23,9 @@ app.get("/", (req, res) => {
   res.send("Hello World from Express JS");
 });
 
-app.use("/user", userRoutes);
+app.use("/user", userRoutes, authRoutes);
 app.use("/post", postRoutes);
-app.use("/user", authRoutes);
+// app.use("/user", authRoutes);
 
 const PORT = process.env.PORT;
 connectDB();
