@@ -1,24 +1,45 @@
-export default function Authenticate({ children }) {
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
-  const verifyUser = async (req, res) => {
+export default function Authenticate({ children }) {
+  const [valid, setValid] = useState(null);
+
+  const router = useRouter();
+
+  const verifyUser = async () => {
     try {
-        res = await fetch ("http://localhost:4004/user/verify", {
+        const response = await fetch ("http://localhost:4004/user/verify", {
         method: "GET",
         headers: {
           "Content-Type" : "application/json"
         },
         credentials: "include",
       })
+      if (response.ok){
+        setValid(true)
+      }
+        else if(!response.ok && response.status === 401){
+          console.log("Unauthorized Access, Redirecting to Login Page...", `${response.status}`)
+          setValid(false);
+          router.push("/Login")
+      }
 
-      console.log("Response: ", res);
+      console.log("Response: ", response);
     } catch (error) {
       console.log({
         message : error,
         error: error.message,
       })
+      setValid(false);
+    }
+    finally {
+      setValid(false); // Always stop loading after fetch
     }
   }
 
-  verifyUser();
-  return <>{children}</>;
+  useEffect(()=>{
+    verifyUser()
+  },[])
+  
+  return valid ? <> {children} </> : null;
 }
