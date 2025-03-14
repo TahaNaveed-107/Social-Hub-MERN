@@ -22,7 +22,7 @@ export default function Menu() {
             <button
               key={index}
               onClick={()=> onClickHandler(item)}
-              className={styles.buttons}
+              className={`${styles.buttons} ${activeTab === item ? styles.active : ""}`}
             >
               {item}
             </button>

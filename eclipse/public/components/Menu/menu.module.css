@@ -16,7 +16,7 @@
 
 .buttons {
   border: none;
-  background-color: rgb(228, 228, 228);
+  background-color: rgb(212, 212, 212);
   border-radius: 10px;
   height: 2rem;
   width: 5rem;
@@ -26,4 +26,10 @@
 .buttons:hover {
   background-color: white;
   transition: 0.5s;
+}
+
+.active {
+  background-color:  rgb(235, 235, 235);
+  color: black;
+  font-weight: bold;
 }
