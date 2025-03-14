@@ -9,10 +9,11 @@ export default function Menu() {
   const router = useRouter();
 
   const onClickHandler = (item) => {
-    console.log(item);
-    router.push("");
+    setActiveTab(item);
+    console.log(activeTab);
+    router.push(`/Eclipse/${activeTab}`);
   };
-  useEffect(() => {}, []);
+
   return (
     <>
       <div className={styles.tabsList}>

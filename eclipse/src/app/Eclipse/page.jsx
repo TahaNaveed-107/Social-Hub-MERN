@@ -1,7 +1,7 @@
 "use client";
-import Menu from "../../../../public/components/Menu/page";
+import Menu from "../../../public/components/Menu/page";
 import { useState, useEffect } from "react";
-import Authenticate from "../../../../public/components/Authentication/page";
+import Authenticate from "../../../public/components/Authentication/page";
 export default function Eclipse() {
   const [name, setName] = useState("");
 

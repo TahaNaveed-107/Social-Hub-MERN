@@ -3,7 +3,7 @@ export const verifyUser = async (req, res) => {
   const token = req.cookies.token;
 
   if (!token) {
-    return res.status(401).json({
+    return res.status(404).json({
       message: "No Token Found",
     });
   }

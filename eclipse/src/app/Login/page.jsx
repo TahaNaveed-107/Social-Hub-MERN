@@ -37,7 +37,7 @@ export default function Login() {
       const userID = data.user.id;
       localStorage.setItem("userID", userID);
 
-      router.push(`/Eclipse/${userID}`);
+      router.push(`/Eclipse/`);
     } catch (error) {
       console.error("Login Error: ", error);
     }

@@ -18,13 +18,13 @@ export default function Authenticate({ children }) {
       if (response.ok){
         setValid(true)
       }
-        else if(!response.ok && response.status === 401){
+        else if(!response.ok && response.status === 404){
           console.log("Unauthorized Access, Redirecting to Login Page...", `${response.status}`)
           setValid(false);
-          router.push("/Login")
+          router.push("/Login");
       }
-
       console.log("Response: ", response);
+
     } catch (error) {
       if (response.status === 401){
         console.log("No valid Cookie Found", response.status )
