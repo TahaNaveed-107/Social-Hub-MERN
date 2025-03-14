@@ -26,14 +26,14 @@ export default function Authenticate({ children }) {
 
       console.log("Response: ", response);
     } catch (error) {
+      if (response.status === 401){
+        console.log("No valid Cookie Found", response.status )
+      }
       console.log({
         message : error,
         error: error.message,
       })
       setValid(false);
-    }
-    finally {
-      setValid(false); // Always stop loading after fetch
     }
   }
 
