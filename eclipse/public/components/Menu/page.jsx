@@ -10,8 +10,8 @@ export default function Menu() {
 
   const onClickHandler = (item) => {
     setActiveTab(item);
-    console.log(activeTab);
-    router.push(`/Eclipse/${activeTab}`);
+    console.log(item);
+    router.push(`/Eclipse/${item}`);
   };
 
   return (
@@ -21,7 +21,7 @@ export default function Menu() {
           return (
             <button
               key={index}
-              onClick={onClickHandler}
+              onClick={()=> onClickHandler(item)}
               className={styles.buttons}
             >
               {item}
