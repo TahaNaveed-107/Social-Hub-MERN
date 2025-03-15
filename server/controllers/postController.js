@@ -1,5 +1,6 @@
 import Post from "../models/post.model.js";
 import User from "../models/user.model.js";
+import cloudinary from "../utils/cloudinary.js";
 
 export const getPosts = async (req, res) => {
   try {
@@ -45,15 +46,7 @@ export const createPost = async (req, res) => {
     }
 
     const userID = req.user.id;
-    const { url, caption } = req.body;
-
-    if (userID) console.log("user id exists", userID);
-
-    if (!url) {
-      return res.status(400).json({
-        message: "URL is required",
-      });
-    }
+    const { caption } = req.body;
 
     if (!caption || caption.length > 500) {
       return res.status(400).json({
@@ -61,9 +54,11 @@ export const createPost = async (req, res) => {
       });
     }
 
+    if (userID) console.log("user id exists", userID);
+
     const newPost = new Post({
       user: userID,
-      url,
+      url: imageURL,
       caption: caption?.trim(),
       likeCount: 0,
       commentCount: 0,
