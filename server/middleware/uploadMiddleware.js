@@ -11,4 +11,5 @@ const storage = new CloudinaryStorage({
 })
 
 const uplaod = multer({storage});
+console.log(uplaod);
 export default uplaod;
