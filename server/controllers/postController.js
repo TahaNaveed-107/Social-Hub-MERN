@@ -56,6 +56,16 @@ export const createPost = async (req, res) => {
 
     let imageURL = null;
 
+    if (req.file){
+      const result = await cloudinary.uploader.upload(req.file.path,{
+        folder: "eclipse_posts",
+        resource_type: "image",
+      })
+      imageURL = result.secure_url;
+    } else {
+      return res.status(400).json({message: "Image file is required"})
+    }
+
     if (userID) console.log("user id exists", userID);
 
     const newPost = new Post({
