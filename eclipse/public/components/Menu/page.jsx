@@ -4,14 +4,19 @@ import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function Menu() {
-  const tabs = ["Home", "Profile"];
+  const tabs = ["Home","Posts", "Profile"];
   const [activeTab, setActiveTab] = useState(tabs[0]);
   const router = useRouter();
 
   const onClickHandler = (item) => {
     setActiveTab(item);
     console.log(item);
-    router.push(`/Eclipse/${item}`);
+    if (item === "Home"){
+      router.push("/Eclipse")
+    }
+    else{
+      router.push(`/Eclipse/${item}`);
+    }
   };
 
   return (

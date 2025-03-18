@@ -28,7 +28,7 @@ app.use("/post", postRoutes);
 // app.use("/user", authRoutes);
 
 const PORT = process.env.PORT;
-console.log("Cloudinary API Key:", process.env.CLOUDINARY_API_KEY);
+// console.log("Cloudinary API Key:", process.env.CLOUDINARY_API_KEY);
 
 connectDB();
 app.listen(PORT, "0.0.0.0", () => {
