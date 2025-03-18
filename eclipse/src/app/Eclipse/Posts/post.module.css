@@ -1,0 +1,17 @@
+
+.gridContainer{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 5px;
+}
+
+.imgContainer{
+    /* display: grid;
+    grid-template-columns: auto auto;
+    grid-template-rows: 8 ; */
+}
+
+    .post{
+        width: 100%;
+        /* max-height: 30%; */
+    }

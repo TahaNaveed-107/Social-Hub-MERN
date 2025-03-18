@@ -1,44 +1,6 @@
-// "use client"
-// import Menu from "../../../../public/components/Menu/page"
-// import { useEffect, useState } from "react"
-
-// export default function Posts(){
-//     const [data, setData] = useState([])
-//     const fetchPosts = async (req, res) => {
-//         try {
-//             const response = await fetch(`http://localhost:4004/post`,{
-//                 method: "GET",
-//                 credentials: "include",
-//                 headers: {
-//                     "Content-Type": "application/json",
-//                 },
-//             })
-//             const responseData = await response.json();
-//             console.log("Response Data ",responseData)
-//             setData(responseData)
-//             console.log("Data State ",data)
-
-//         } catch (error) {
-//             console.log("error" , error)
-//         }
-//     }    
-
-//     useEffect(()=>{
-//         fetchPosts()
-//     },[])
-    
-
-//     return (
-//         <>
-//         <h2>This is Posts Page</h2>
-//         <p>All of your posts are Listed Here</p>
-//         <Menu/>
-//         </>
-//     )
-// }
-
 "use client";
 import Menu from "../../../../public/components/Menu/page";
+import styles from "./post.module.css"
 import { useEffect, useState } from "react";
 
 export default function Posts() {
@@ -61,7 +23,7 @@ export default function Posts() {
 
             const responseData = await response.json();
             console.log("Response Data: ", responseData);
-            setData(responseData); // ✅ This updates state asynchronously
+            setData(responseData); 
         } catch (error) {
             console.error("Error fetching posts:", error);
         }
@@ -71,7 +33,6 @@ export default function Posts() {
         fetchPosts();
     }, []);
 
-    // ✅ Log data when it updates
     useEffect(() => {
         console.log("Updated Data State:", data);
     }, [data]);
@@ -80,15 +41,18 @@ export default function Posts() {
         <>
             <h2>This is Posts Page</h2>
             <p>All of your posts are listed here</p>
-            <ul>
+                <div className={styles.gridContainer} >
                 {data.length > 0 ? (
-                    data.map((item, index) => (
-                        <li key={index}>{item.caption}</li> // Adjust according to API response
+                    data.map((item) => (
+                        <div className={styles.imgContainer}  key={item._id}>  {/* Use a unique database ID */}
+                        <p>{item.caption}</p>
+                        <img className={styles.post}  src={item.url} alt={item.caption} />
+                    </div>
                     ))
                 ) : (
                     <p>Loading posts...</p>
                 )}
-            </ul>
+                </div>
                 <Menu />
         </>
     );
