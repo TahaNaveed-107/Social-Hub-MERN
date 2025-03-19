@@ -1,6 +1,7 @@
 "use client"
 import Menu from "../../../../public/components/Menu/page"
 import { useEffect } from "react"
+import Authenticate from "../../../../public/components/Authentication/page"
 
 export default function Posts(){
     const fetchPosts = async (req, res) => {
@@ -23,10 +24,11 @@ export default function Posts(){
     
 
     return (
-        <>
+        <Authenticate>
+
         <h2>This is Profile Page</h2>
         <p>All of your information Appears here</p>
         <Menu/>
-        </>
+        </Authenticate>
     )
 }

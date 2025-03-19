@@ -2,6 +2,7 @@
 import Menu from "../../../../public/components/Menu/page";
 import styles from "./post.module.css"
 import { useEffect, useState } from "react";
+import Authenticate from "../../../../public/components/Authentication/page";
 
 export default function Posts() {
     const [data, setData] = useState([]); // Default empty array to avoid errors
@@ -38,7 +39,7 @@ export default function Posts() {
     }, [data]);
 
     return (
-        <>
+        <Authenticate>
         <div className={styles.header}>
             <h2>This is Posts Page</h2>
             <p>All of your posts are listed here</p>
@@ -56,6 +57,6 @@ export default function Posts() {
                 )}
                 </div>
                 <Menu />
-        </>
+        </Authenticate>
     );
 }

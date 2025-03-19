@@ -1,22 +1,46 @@
+/* For screens **smaller than** 768px (Tablets & Mobiles) */
+@media (max-width: 768px) {
+    .gridContainer {
+        grid-template-columns: repeat(2, 1fr) !important;
+        max-width: 768px;
+        transition: 0.7s;
+    }
+}
+
+@media (max-width:540px) {
+    .gridContainer {
+        grid-template-columns: 1fr !important;
+        transition: 0.7s;
+    }
+    .post{
+        aspect-ratio: 2/1 !important;
+        transition: 0.7s;
+    }
+}
+
+
 .header{
     max-width: 980px;
+    width: 100%;
     justify-self: center;
     justify-content: start;
     background-color: antiquewhite;
 }
 
 .gridContainer{
-    margin-top: 5rem;
+    margin: 5rem 1% ;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 5px;
     max-width: 980px;
     justify-self: center;
+    transition: 0.7s;
 }
 
 .post {
     width: 100%;  
-    aspect-ratio: 1 / 1 ; /* Ensures a perfect square */
-    object-fit: cover;  /* Crops image without distortion */
-    border-radius: 5px; /* Optional: Adds rounded corners */
+    aspect-ratio: 1 / 1 ; 
+    object-fit: cover;  
+    border-radius: 7px;
+    transition: 0.7s;
 }
