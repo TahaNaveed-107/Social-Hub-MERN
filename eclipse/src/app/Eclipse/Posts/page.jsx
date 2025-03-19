@@ -17,7 +17,7 @@ export default function Posts() {
             });
 
             if (!response.ok) {
-                console.error(`Error: ${response.status} - ${response.statusText}`);
+                console.log(`Error: ${response.status} - ${response.statusText}`);
                 return;
             }
 
@@ -39,13 +39,15 @@ export default function Posts() {
 
     return (
         <>
+        <div className={styles.header}>
             <h2>This is Posts Page</h2>
             <p>All of your posts are listed here</p>
+        </div>
                 <div className={styles.gridContainer} >
                 {data.length > 0 ? (
                     data.map((item) => (
                         <div className={styles.imgContainer}  key={item._id}>  {/* Use a unique database ID */}
-                        <p>{item.caption}</p>
+                        {/* <p>{item.caption}</p> */}
                         <img className={styles.post}  src={item.url} alt={item.caption} />
                     </div>
                     ))

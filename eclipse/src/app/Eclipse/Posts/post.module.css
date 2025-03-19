@@ -1,17 +1,22 @@
+.header{
+    max-width: 980px;
+    justify-self: center;
+    justify-content: start;
+    background-color: antiquewhite;
+}
 
 .gridContainer{
+    margin-top: 5rem;
     display: grid;
     grid-template-columns: repeat(3,1fr);
     gap: 5px;
+    max-width: 980px;
+    justify-self: center;
 }
 
-.imgContainer{
-    /* display: grid;
-    grid-template-columns: auto auto;
-    grid-template-rows: 8 ; */
+.post {
+    width: 100%;  
+    aspect-ratio: 1 / 1 ; /* Ensures a perfect square */
+    object-fit: cover;  /* Crops image without distortion */
+    border-radius: 5px; /* Optional: Adds rounded corners */
 }
-
-    .post{
-        width: 100%;
-        /* max-height: 30%; */
-    }
