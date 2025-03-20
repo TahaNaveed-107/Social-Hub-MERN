@@ -47,8 +47,12 @@ export default function Posts() {
                 <div className={styles.gridContainer} >
                 {data.length > 0 ? (
                     data.map((item) => (
-                        <div className={styles.imgContainer}  key={item._id}>  {/* Use a unique database ID */}
+                        <div className={styles.imgContainer} key={item._id}>
                         {/* <p>{item.caption}</p> */}
+                        <div className={styles.imgOverlay}>
+                            <img src={null} className={styles.icon} alt="Likes" />
+                            <img src={null} className={styles.icon} alt="Comments" />
+                        </div>
                         <img className={styles.post}  src={item.url} alt={item.caption} />
                     </div>
                     ))
