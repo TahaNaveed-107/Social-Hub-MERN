@@ -50,8 +50,8 @@ export default function Posts() {
                         <div className={styles.imgContainer} key={item._id}>
                         {/* <p>{item.caption}</p> */}
                         <div className={styles.imgOverlay}>
-                            <img src={null} className={styles.icon} alt="Likes" />
-                            <img src={null} className={styles.icon} alt="Comments" />
+                            <p><img src={null} alt="" />{item.likes.length}</p>
+                            <p><img src={null} alt="" />{item.comments.length}</p>
                         </div>
                         <img className={styles.post}  src={item.url} alt={item.caption} />
                     </div>
