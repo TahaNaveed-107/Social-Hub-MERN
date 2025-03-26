@@ -55,7 +55,7 @@
 
 
 .imgOverlay{
-    background-color: rgb(150, 150, 150, 0.5);
+    background-color: rgba(0, 0, 0, 0.25);
     position: absolute;
     border-radius: 5px;
     width: 100%;
@@ -71,10 +71,11 @@
 .imgOverlay:hover{
     opacity: 1;
     transition: 0.3s ease-in-out;
+    color: white;
+    scale: 1.5;
 }
 
 .icon{
     width: 30%;
     height: 30%;
-    /* background-color: aquamarine; */
 }

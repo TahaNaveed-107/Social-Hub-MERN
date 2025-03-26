@@ -44,6 +44,9 @@ export default function Posts() {
             <h2>This is Posts Page</h2>
             <p>All of your posts are listed here</p>
         </div>
+        <div className={styles.addPost}>
+            <button type="button">Add</button>
+        </div>
                 <div className={styles.gridContainer} >
                 {data.length > 0 ? (
                     data.map((item) => (
