@@ -1,12 +1,33 @@
 "use client"
+import Authenticate from "../../../../../public/components/Authentication/page";
 import { useState } from "react";
-export default function Form (){
+const Form = ({onClose, onSubmit}) => {
 
     const [caption,setCaption] = useState("")
+    const [file,setFile] = useState(null)
+    
     const submitHandler = (e) => {
         e.preventDefault();
+            switch (key) {
+                case !caption:
+                    alert("Caption Required")
+                    break;
+                case !file:
+                    alert
+                default:
+                    break;
+            }
     }
+
+    const changImageHandler = (e) => {
+        const imageFile = e.target.files[0];
+        if (imageFile){
+            setFile(imageFile)
+        }
+    }
+
     return (
+        // <Authenticate>
         <div>
             <form onSubmit={submitHandler}>
                 <p><input 
@@ -21,12 +42,17 @@ export default function Form (){
                 <p><input 
                 type="file" 
                 name="image" 
-                id="" /></p>
+                id=""
+                onChange={changImageHandler} 
+                /></p>
                 <div className="buttons">
                 <button type="submit">Post</button>
-                <button type="button">Cancel</button>
+                <button type="button" onClick={onClose} >Cancel</button>
                 </div>
             </form>
         </div>
+        // </Authenticate>
     )
 }
+
+export default Form;
