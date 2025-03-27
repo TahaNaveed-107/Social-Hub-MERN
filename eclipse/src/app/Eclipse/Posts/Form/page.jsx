@@ -6,24 +6,24 @@ const Form = ({onClose, onSubmit}) => {
     const [caption,setCaption] = useState("")
     const [file,setFile] = useState(null)
     
-    const submitHandler = (e) => {
-        e.preventDefault();
-            switch (key) {
-                case !caption:
-                    alert("Caption Required")
-                    break;
-                case !file:
-                    alert
-                default:
-                    break;
-            }
-    }
-
+    
     const changImageHandler = (e) => {
         const imageFile = e.target.files[0];
         if (imageFile){
             setFile(imageFile)
         }
+    }
+
+    const submitHandler = (e) => {
+        e.preventDefault();
+        if (!caption || !file){
+            alert("Both Fields are Required")
+            return;
+        }
+        // onSubmit({ caption, file });
+        // setCaption("");
+        // setFile(null);
+        // onClose()
     }
 
     return (
