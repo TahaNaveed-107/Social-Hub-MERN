@@ -1,58 +1,45 @@
 "use client"
-import Authenticate from "../../../../../public/components/Authentication/page";
-import { useState } from "react";
-const Form = ({onClose, onSubmit}) => {
+import { useState } from "react"
 
+const CreatePost = () => {
     const [caption,setCaption] = useState("")
-    const [file,setFile] = useState(null)
-    
-    
-    const changImageHandler = (e) => {
-        const imageFile = e.target.files[0];
-        if (imageFile){
-            setFile(imageFile)
-        }
-    }
+    const [image,setImage] = useState(null);
+    const [preview,setPreview] = useState(null)
+    const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
 
-    const submitHandler = (e) => {
-        e.preventDefault();
-        if (!caption || !file){
-            alert("Both Fields are Required")
-            return;
+    const handleSubmit = async(e) => {
+        const file = e.target.files[0];
+        if (file){
+            setImage(file);
+            setPreview
         }
-        // onSubmit({ caption, file });
-        // setCaption("");
-        // setFile(null);
-        // onClose()
-    }
+    } 
 
     return (
-        // <Authenticate>
-        <div>
-            <form onSubmit={submitHandler}>
-                <p><input 
-                type="text" 
-                name="caption" 
-                id="" 
-                value={caption}
-                placeholder="Enter Caption" 
-                onChange={(e)=>{
-                    setCaption(e.target.value)
-                }}/></p>
-                <p><input 
-                type="file" 
-                name="image" 
-                id=""
-                onChange={changImageHandler} 
-                /></p>
-                <div className="buttons">
-                <button type="submit">Post</button>
-                <button type="button" onClick={onClose} >Cancel</button>
-                </div>
-            </form>
+        <div className="p-4 border rounded-lg shadow-lg">
+          <h2 className="text-xl font-bold mb-4">Create a Post</h2>
+    
+          {error && <p className="text-red-500">{error}</p>}
+    
+          <form onSubmit={handleSubmit}>
+            <input
+              type="text"
+              placeholder="Enter caption..."
+              value={caption}
+              onChange={(e) => setCaption(e.target.value)}
+              className="w-full p-2 border mb-2"
+            />
+    
+            <input type="file" accept="image/*" onChange={handleImageChange} className="mb-2" />
+    
+            {preview && <img src={preview} alt="Preview" className="w-full h-40 object-cover mb-2" />}
+    
+            <button type="submit" className="bg-blue-500 text-white p-2 rounded" disabled={loading}>
+              {loading ? "Uploading..." : "Create Post"}
+            </button>
+          </form>
         </div>
-        // </Authenticate>
-    )
+      );
 }
-
-export default Form;
+export default CreatePost
